@@ -17,7 +17,7 @@ test('Task 4: Breadcrumbs + URL', async ({ page }) => {
   expect(page.url()).toContain('category&path=49');
   expect(page.url().toLowerCase()).toContain('category&path=49_51');
 
-  // Повернення через breadcrumb
+  // Return via breadcrumb
   await page.getByRole('link', { name: 'Fragrance' }).nth(1).click();
   await breadcrumb.checkBreadcrumbContains('Fragrance');
 });

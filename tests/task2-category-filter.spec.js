@@ -11,12 +11,12 @@ test('Task 2: Kategórie + filtrácia', async ({ page }) => {
   await home.goto();
   await home.goToCategory('Skincare');
 
-  // Сортування
+  // Sort By Name A–Z
   await category.sortBy('pd.name-ASC');
   const names = await category.getAllProductNames();
   expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
 
-  // Вибір випадкового продукту
+  // Select a random product
   const listName = await category.selectRandomProduct();
 
   const detailName = await product.getProductName();

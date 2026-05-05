@@ -11,28 +11,28 @@ test('Task 1: Vyhľadanie produktu a nákup', async ({ page }) => {
     await home.goto();
     await home.searchProduct('Skin');
 
-    // Вибираємо продукт
+    // Select a product
     await product.selectProductByName('Skinsheen Bronzer Stick');
     
-    // Перевірка деталей
+    // Check product details
     await expect(product.productName).toBeVisible();
     // await expect(product.productPrice).toBeVisible();
     
-    // Додаємо в кошик
+    // Add to cart
     await product.addToCart();
 
-    // Перевірка в хедері
+    // Check in the header
     await home.hoverCart();
     const cartProduct = page.locator('#top_cart_product_list').getByRole('cell', { name: 'Skinsheen Bronzer Stick' });
     await expect(cartProduct).toBeVisible();
 
-    // Перевірка в кошику
+    // Check in the cart
     await cart.goto();
     const cartRow = cart.row(1);
     await expect(cartRow.name).toContainText('Skinsheen Bronzer Stick');
     // await expect(cartRow.unitPrice).toContainText(await product.getProductPrice());
 
-    // Видалення
+    // Deletting the product from the cart
     await cart.row(1).remove.click();
     await expect(page.getByText('Your shopping cart is empty!')).toBeVisible();
 });

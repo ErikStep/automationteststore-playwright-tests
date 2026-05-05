@@ -4,7 +4,7 @@
   "description": "Playwright tests for Automation Test Store",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
+    "test": "npx playwright test tests --grep-invert simpleTests",
     "test:report": "npx playwright show-report"
   },
   "repository": {

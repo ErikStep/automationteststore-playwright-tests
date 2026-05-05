@@ -21,11 +21,11 @@ test('Task 2: Kategórie + filtrácia', async ({ page }) => {
     expect(names).toEqual(sorted);
 
     // 5. Random product and detail verification
-    const productElements = products.locator('div.col-md-3'); // Всі окремі продукти
+    const productElements = products.locator('div.col-md-3'); // All individual products
     const count = await productElements.count();
     const index = Math.floor(Math.random() * count);
 
-    // Вибираємо конкретний продукт
+    // Select a specific product
     const product = productElements.nth(index);
     const productNameLocator = product.locator('div.fixed_wrapper div.fixed a.prdocutname');
     const listName = await productNameLocator.innerText();

@@ -35,7 +35,7 @@ test('Task 3: Košík s viacerými položkami', async ({ page }) => {
   await expect(row1.quantity).toHaveValue('1');
   await expect(row2.quantity).toHaveValue('1');
 
-  // Змінюємо кількість першого продукту
+  // Change the quantity of the first product
   await row1.quantity.fill('2');
   await page.getByRole('button', { name: 'Update' }).first().click();
 
@@ -43,7 +43,7 @@ test('Task 3: Košík s viacerými položkami', async ({ page }) => {
   const total1 = parseFloat((await row1.total.innerText()).replace('$', '').trim());
   expect(total1).toBeCloseTo(unit1 * 2, 2);
 
-  // Видаляємо перший продукт
+  // Delete the first product
   await row1.remove.click();
   await expect(row1.name).toContainText('Body Cream by Bulgari');
 });

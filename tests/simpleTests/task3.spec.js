@@ -23,9 +23,9 @@ test('Task 3: Košík s viacerými položkami', async ({ page }) => {
   await page.goto('https://automationteststore.com/index.php?rt=checkout/cart');
 
   const rows = page.locator('div.container-fluid.cart-info.product-list table tbody tr');
-  await expect(rows).toHaveCount(3); // 2 produkty + řádek s celkem
+  await expect(rows).toHaveCount(3); // 2 products + row with header
 
-  // Перевірка назв і цін
+  // Check names and prices
   const names = rows.locator('td:nth-child(2) a');
   const unitPrices = rows.locator('td:nth-child(4)');
   const qtyInputs = rows.locator('input[name*="quantity"]');
@@ -40,7 +40,7 @@ test('Task 3: Košík s viacerými položkami', async ({ page }) => {
   await expect(qtyInputs.nth(0)).toHaveValue('1');
   await expect(qtyInputs.nth(1)).toHaveValue('1');
 
-  // Змінити кількість першого
+  // Change the quantity of the first one
   await qtyInputs.nth(0).fill('2');
   await page.getByRole('button', { name: 'Update' }).first().click();
 
@@ -50,9 +50,9 @@ test('Task 3: Košík s viacerými položkami', async ({ page }) => {
 
   expect(total1).toBeCloseTo(unit1 * 2, 2);
 
-  // Видалити тільки перший продукт
+  // Delete only the first product
   await rows.nth(1).getByRole('link').filter({ hasText: /^$/ }).nth(1).click();
 
-  await expect(rows).toHaveCount(2); // 1 продукт + řádek s celkem
+  await expect(rows).toHaveCount(2); // 1 products + row with header
   await expect(names.nth(0)).toContainText('Body Cream by Bulgari');
 });
