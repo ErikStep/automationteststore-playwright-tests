@@ -1,0 +1,27 @@
+{
+  "name": "automationteststore-playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for Automation Test Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:report": "npx playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErikStep/automationteststore-playwright-tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ErikStep/automationteststore-playwright-tests/issues"
+  },
+  "homepage": "https://github.com/ErikStep/automationteststore-playwright-tests#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  }
+  
+}
